@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 
+//rest
 @RestController
 @RequestMapping("/blog/comments")
 public class BlogCommentController {
