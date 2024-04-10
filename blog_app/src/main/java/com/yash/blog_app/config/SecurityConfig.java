@@ -18,6 +18,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.yash.blog_app.jwt.JwtRequestFilter;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 import com.yash.blog_app.service.UserService;
 
 @Configuration
@@ -39,19 +41,17 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 // Configure CORS and CSRF settings
-                .cors().and().csrf().disable()
+                .cors(withDefaults()).csrf(csrf -> csrf.disable())
                 // Configure authorization rules
-                .authorizeRequests()
-                // Permit access to login and registration endpoints
-                .requestMatchers("/api/users/login").permitAll()
-                .requestMatchers("/api/users/register").permitAll()
-                // Require authentication for all other endpoints under "/api"
-                .requestMatchers("/api/**").authenticated()
-                .and()
+                .authorizeHttpRequests(requests -> requests
+                        // Permit access to login and registration endpoints
+                        .requestMatchers("/api/users/login").permitAll()
+                        .requestMatchers("/api/users/register").permitAll()
+                        // Require authentication for all other endpoints under "/api"
+                        .requestMatchers("/api/**").authenticated())
                 // Configure session management to be STATELESS
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+                .sessionManagement(management -> management
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 // Configure authentication provider and JWT filter
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
