@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
-@RequestMapping("/blog/comments")
+@RequestMapping("api/blog/comments")
 public class BlogCommentController {
 
     @Autowired

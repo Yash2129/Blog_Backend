@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("api/blogs")
+@RequestMapping("api/blog")
 public class BlogController {
 
     @Autowired

@@ -20,6 +20,7 @@ public class Configurations {
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
+            @SuppressWarnings("null")
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 // Allow cross-origin requests from all origins and methods
