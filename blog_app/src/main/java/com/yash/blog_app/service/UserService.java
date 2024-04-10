@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.yash.blog_app.config.UserInfoUserDetails;
@@ -19,7 +20,12 @@ public class UserService implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public Users registerUser(Users user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // Save the user in the database
         return userRepository.save(user);
     }
 

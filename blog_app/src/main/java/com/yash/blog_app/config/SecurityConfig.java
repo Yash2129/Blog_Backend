@@ -43,8 +43,8 @@ public class SecurityConfig {
                 // Configure authorization rules
                 .authorizeRequests()
                 // Permit access to login and registration endpoints
-                .requestMatchers("/api/user/login").permitAll()
-                .requestMatchers("/api/user/register").permitAll()
+                .requestMatchers("/api/users/login").permitAll()
+                .requestMatchers("/api/users/register").permitAll()
                 // Require authentication for all other endpoints under "/api"
                 .requestMatchers("/api/**").authenticated()
                 .and()
