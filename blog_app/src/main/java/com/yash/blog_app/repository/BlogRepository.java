@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface BlogRepository extends JpaRepository<Blog,Long>{
     
-    @Query("SELECT b FROM Blog b WHERE b.user.email = :email")
-    List<Blog> findBlogByEmail(String email);
+    @Query("SELECT b FROM Blog b WHERE b.user.username = :username")
+    List<Blog> findBlogByUsername(String username);
 
 }

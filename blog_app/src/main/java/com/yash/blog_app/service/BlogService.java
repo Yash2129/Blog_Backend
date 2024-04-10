@@ -22,7 +22,7 @@ public class BlogService {
         return blogRepository.save(blog);
     }
 
-    public List<Blog> findBlogByEmail(String email){
-        return blogRepository.findBlogByEmail(email);
+    public List<Blog> findBlogByUsername(String username){
+        return blogRepository.findBlogByUsername(username);
     }
 }

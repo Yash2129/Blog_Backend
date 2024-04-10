@@ -33,9 +33,9 @@ public class BlogController {
         return new ResponseEntity<List<Blog>>(allBlog, HttpStatus.OK);
     }
 
-    @GetMapping("/{email}")
-    public ResponseEntity<List<Blog>> getBlogByUsername(@PathVariable String email) {
-        List<Blog> blog = blogService.findBlogByEmail(email);
+    @GetMapping("/{username}")
+    public ResponseEntity<List<Blog>> getBlogByUsername(@PathVariable String username) {
+        List<Blog> blog = blogService.findBlogByUsername(username);
 
         if (blog == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
