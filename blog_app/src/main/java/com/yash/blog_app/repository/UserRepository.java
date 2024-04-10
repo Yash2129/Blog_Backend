@@ -9,8 +9,9 @@ import com.yash.blog_app.entity.Users;
 
 
 
+
 @Repository
 public interface UserRepository extends JpaRepository<Users,Long>{
 
-    Optional<Users> findByEmail(String email);
+    Optional<Users> findByUsername(String username);
 }

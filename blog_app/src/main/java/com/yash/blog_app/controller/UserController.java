@@ -32,9 +32,9 @@ public class UserController {
         return new ResponseEntity<List<Users>>(allUsers, HttpStatus.OK);
     }
 
-    @GetMapping("/{email}")
-    public ResponseEntity<Users> getUserByEmail(@PathVariable String email) {
-        Users user = userService.findByEmail(email);
+    @GetMapping("/{username}")
+    public ResponseEntity<Users> getUserByUsername(@PathVariable String username) {
+        Users user = userService.findByUsername(username);
 
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
